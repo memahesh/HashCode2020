@@ -4,19 +4,25 @@ import java.util.*;
 
 // Main Class For The Solution
 public class Main {
-    
+
+//  Global Variable for total distinct books, libraries and total days
     public static int books, libraries, maxDays;
 
     public static String currentFile = "";
 
+//  Mapping of bookIDs against their scores
     public static ArrayList<Integer> bookScores;
 
-
+//  Scanning Facility Class
     public static class ScanningFacility{
 
         private int remDays = maxDays;
+
+//      Variable containing the list of signedUpLibraries
         private HashSet<Library> signedUpLibraries = new HashSet<Library>();
+//      Contains the books scanned by libraries till now
         private HashSet<Integer> booksScanned = new HashSet<Integer>();
+//      Contains a mapping of books scanned against library
         private HashMap<Library, List<Integer>> lib2BookIDs = new HashMap<Library, List<Integer>>();
 
 
@@ -24,17 +30,18 @@ public class Main {
 
         }
 
+//      Function for signing up library to the scanning facility
         private void addLibrary(Library l, int d){
             l.signedUpAt = d + l.signUpProcess;
             signedUpLibraries.add(l);
         }
 
-
+//      Contains the scanning strategy for the scanning facility
         private void scanStrategy(ArrayList<Library> allLibraries){
 
-            Collections.sort(allLibraries, signUpLibraryComparator);
-
             while(allLibraries.size() != 0){
+
+                Collections.sort(allLibraries, signUpLibraryComparator);
 
                 Library curr = allLibraries.get(0);
                 signedUpLibraries.add(curr);
@@ -48,6 +55,7 @@ public class Main {
                 List<Integer> temp = new LinkedList<Integer>(tempBooks);
                 Collections.sort(temp, bookScoreComparator);
                 int tempBookCounts = Math.min(temp.size(), Math.min(curr.totalBooks, remDays*curr.booksPerDay));
+
                 if(tempBookCounts <= 0){
                     continue;
                 }
@@ -62,6 +70,7 @@ public class Main {
 
         }
 
+//      Contains the code to write to `output_*.txt` files
         private void makeSubmission(){
 
             try{
@@ -83,7 +92,6 @@ public class Main {
                     }
                     buffer.write(tempStr);
                     buffer.newLine();
-                    System.out.println();
                 }
 
                 buffer.close();
@@ -98,7 +106,7 @@ public class Main {
 
 
 
-
+//    Library Class
     public static class Library {
 
         private HashSet<Integer> bookIDs;
@@ -129,13 +137,13 @@ public class Main {
 
             double priorityScore = 0.0;
 
-            double avgScore = 0.0;
-
-            for(Integer i: l.bookIDs){
-                avgScore += bookScores.get(i);
-            }
-
-            avgScore = avgScore/l.totalBooks;
+            double avgScore = 1.0;
+//
+//            for(Integer i: l.bookIDs){
+//                avgScore += bookScores.get(i);
+//            }
+//
+//            avgScore = avgScore/l.totalBooks;
 
             priorityScore = Math.min(l.totalBooks, (maxDays - l.signUpProcess)*l.booksPerDay)*avgScore;
 
@@ -210,7 +218,8 @@ public class Main {
 
         for(String str : filePath){
             currentFile = str;
-            readAndExecute("C:\\Users\\DELL\\Desktop\\HashCode2020\\src\\"+str);
+            readAndExecute("C:\\Users\\DELL\\Desktop\\HashCode2020\\src\\datasets\\"+str);
+            System.out.println(currentFile + " executed");
         }
 
     }
