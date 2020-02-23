@@ -22,6 +22,16 @@ My Online Qualification Round Submission for Google HashCode 2020
    - `bookScoreComparator` - Comparator that sorts the books by scores currently in booksScores
    - `signUpLibraryComparator` - Comparator to sort and identify which library to sign up
 
+## Flow
+
+ - __Step 1__ : Add input data to variables
+ - __Step 2__ : Identify Library to signup at the Scanning Facility using `signUpLibraryComparator`
+ - __Step 3__ : Identify which Books to scan in the Library selected in __Step 2__ using `bookScoreComparator`
+ - __Step 4__ : Remove books that are already scanned from __Step 3__ using `booksScanned`
+ - __Step 5__ : Add newly scanned books to `booksScanned` and removing this library from the set of libraries
+ - __Step 6__ : Update the results of __Step 2__ and __Step 3__ to `lib2BookIDs`
+ - __Step 7__ : Write Output to `output_*.txt`
+
 ## Standing
    - Online Round Standing - 9295th Rank 
    - Extended Round Standing - 2834th Rank
