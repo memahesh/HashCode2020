@@ -8,20 +8,23 @@ My Online Qualification Round Submission for Google HashCode 2020
  - `datasets/` - Contains test cases
  - `output_*.txt` - Generated Output Files
  - `HashCode2020_ProblemStatement.pdf` - Problem Statement of HashCode 2020
+ - `Library.java` - Library Class containing all details of Library
+    - Getters and Setters for Library data as required
+ - `ScanningFacility.java` - Blue Print of how Scanning Facility is designed
+  - `addLibrary(Library, current_day)` - Function for signing up library to the scanning facility
+  - `scanStrategy(allLibraries)` - Contains the scanning strategy for the scanning facility
+  - `makeSubmission()` - Contains the code to write to `output_*.txt` files
+  - `bookScores` - Variable containing mapping of scores against books
+  - `signedUpLibraries` - Variable containing the list of signedUpLibraries
+  - `booksScanned` - Contains the books scanned by libraries till now
+  - `lib2BookIDs` - Contains a mapping of books scanned against library
+  - `bookScoreComparator` - Comparator that sorts the books by scores currently in booksScores
+  - `signUpLibraryComparator` - Comparator to sort and identify which library to sign up
  - `Main.java` - The main class file
-   - `Library` - Library Class containing all details of Library
-   - `Scanning Facility` - Blue Print of how Scanning Facility is designed
-     - `addLibrary(Library, current_day)` - Function for signing up library to the scanning facility
-     - `scanStrategy(allLibraries)` - Contains the scanning strategy for the scanning facility
-     - `makeSubmission()` - Contains the code to write to `output_*.txt` files
-     - `signedUpLibraries` - Variable containing the list of signedUpLibraries
-     - `booksScanned` - Contains the books scanned by libraries till now
-     - `lib2BookIDs` - Contains a mapping of books scanned against library
    - `bookScores` - Global Variable contains mapping of scores against books
    - `books, libraries, maxDays` - Distinct Books, Libraries and Total Days given in input
-   - `bookScoreComparator` - Comparator that sorts the books by scores currently in booksScores
-   - `signUpLibraryComparator` - Comparator to sort and identify which library to sign up
-
+   - `readAndExecute(filePath)` - Reads from input file and write result to file
+   
 ## Flow
 
  - __Step 1__ : Add input data to variables
